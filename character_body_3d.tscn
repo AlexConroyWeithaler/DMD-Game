@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxdu1mwn83jcc"]
+[gd_scene load_steps=12 format=3 uid="uid://ba40bxy8eko2v"]
 
-[ext_resource type="Script" uid="uid://cje7hk4hpv6rn" path="res://player.gd" id="1_iwpo4"]
+[ext_resource type="Script" path="res://player.gd" id="1_iwpo4"]
 [ext_resource type="PackedScene" uid="uid://bukbncl0pb76y" path="res://Assets/CharacterbackuP.blend" id="2_fb3t6"]
+[ext_resource type="Shader" uid="uid://e3l0kjneehdm" path="res://ps1.gdshader" id="3_vd578"]
+[ext_resource type="Shader" uid="uid://bguhv0wbjexop" path="res://pixel.gdshader" id="4_c7tqt"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bu0v1"]
 
@@ -9,6 +11,40 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fb3t6"]
 size = Vector3(3.48383, 6.38812, 1.17725)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nl27k"]
+render_priority = 0
+shader = ExtResource("3_vd578")
+shader_parameter/enable_fog = true
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/noise_color = Color(0, 0, 0, 1)
+shader_parameter/fog_distance = 100.0
+shader_parameter/fog_fade_range = 50.0
+shader_parameter/enable_noise = true
+shader_parameter/noise_time_fac = 4.0
+shader_parameter/enable_color_limitation = true
+shader_parameter/color_levels = 16
+shader_parameter/enable_dithering = true
+shader_parameter/dither_strength = 0.3
+
+[sub_resource type="QuadMesh" id="QuadMesh_vd578"]
+material = SubResource("ShaderMaterial_nl27k")
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_obynr"]
+render_priority = 0
+shader = ExtResource("4_c7tqt")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 0.4
+shader_parameter/highlight_strength = 0.1
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/is_perspective_camera = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_jvo56"]
+material = SubResource("ShaderMaterial_obynr")
+size = Vector2(2, 2)
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_iwpo4")
@@ -32,3 +68,12 @@ shape = SubResource("BoxShape3D_fb3t6")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.793088, 0.609108, 0, -0.609108, 0.793088, 0, 8.10423, 8.23163)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49012e-08, -0.401943)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_vd578")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11759e-08, -0.215964)
+mesh = SubResource("QuadMesh_jvo56")
