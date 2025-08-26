@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://ba40bxy8eko2v"]
+[gd_scene load_steps=13 format=3 uid="uid://ba40bxy8eko2v"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_iwpo4"]
+[ext_resource type="Script" uid="uid://cje7hk4hpv6rn" path="res://player.gd" id="1_iwpo4"]
 [ext_resource type="PackedScene" uid="uid://bukbncl0pb76y" path="res://Assets/CharacterbackuP.blend" id="2_fb3t6"]
 [ext_resource type="Shader" uid="uid://e3l0kjneehdm" path="res://ps1.gdshader" id="3_vd578"]
 [ext_resource type="Shader" uid="uid://bguhv0wbjexop" path="res://pixel.gdshader" id="4_c7tqt"]
@@ -11,6 +11,8 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fb3t6"]
 size = Vector3(3.48383, 6.38812, 1.17725)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c7tqt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nl27k"]
 render_priority = 0
@@ -66,11 +68,19 @@ shape = SubResource("BoxShape3D_fb3t6")
 
 [node name="CharacterbackuP" parent="." instance=ExtResource("2_fb3t6")]
 
+[node name="Area3D" type="Area3D" parent="CharacterbackuP"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterbackuP/Area3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("SphereShape3D_c7tqt")
+debug_color = Color(1, 1, 1, 0.42)
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.793088, 0.609108, 0, -0.609108, 0.793088, 0, 8.10423, 8.23163)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49012e-08, -0.401943)
+visible = false
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_vd578")
 
