@@ -1,6 +1,11 @@
 extends CharacterBody3D
 
 @onready var pivot = $CharacterbackuP
+func _ready() -> void:
+	var test = get_collision_mask_value(1)
+	print(test, "player1")
+	var test2 = get_collision_mask_value(7)
+	print(test2, "player2")
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 func _physics_process(delta: float) -> void:
