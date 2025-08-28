@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkdwy4y8vpa78"]
+[gd_scene load_steps=8 format=3 uid="uid://bkdwy4y8vpa78"]
 
+[ext_resource type="Script" uid="uid://yy6nibj1p62s" path="res://lightswitch.gd" id="1_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://ba40bxy8eko2v" path="res://character_body_3d.tscn" id="1_a202f"]
 [ext_resource type="Script" uid="uid://b7qmcgd1fw2dp" path="res://interactable.gd" id="1_noarx"]
 
@@ -25,6 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00272465, 4.29502, 0.016442
 light_energy = 16.0
 light_size = 1.0
 omni_range = 86.797
+script = ExtResource("1_a0tk4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00272465, -5.76312, 0.0164423)
@@ -45,7 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00272465, -0.0298862, 2.619
 collision_layer = 65
 collision_mask = 65
 script = ExtResource("1_noarx")
-prompt_message = "Press this button to do LITERALLY NOTHING!"
+prompt_message = "Lightswitch"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
 transform = Transform3D(4.75557, 0, 0, 0, 7.9585, 0, 0, 0, 1, 0, 0, 0)
@@ -57,3 +59,5 @@ shape = SubResource("BoxShape3D_a0tk4")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_a202f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00374555, -0.0298862, 0.0164423)
+
+[connection signal="interacted" from="Door" to="OmniLight3D" method="_on_door_interacted"]
