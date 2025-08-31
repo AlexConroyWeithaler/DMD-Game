@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfg5nstv0exqf"]
+
+[ext_resource type="PackedScene" uid="uid://bukbncl0pb76y" path="res://Assets/CharacterbackuP.blend" id="1_gi31l"]
+[ext_resource type="Shader" uid="uid://dk10l2qw3oh53" path="res://newshader.gdshader" id="2_53lsi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ol8pu"]
+render_priority = 0
+shader = ExtResource("2_53lsi")
+shader_parameter/jitter = 0.5
+shader_parameter/jitter_z_coordinate = true
+shader_parameter/jitter_depth_independent = true
+shader_parameter/affine_texture_mapping = true
+shader_parameter/alpha_scissor = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gi31l"]
+render_priority = 0
+shader = ExtResource("2_53lsi")
+shader_parameter/jitter = 0.5
+shader_parameter/jitter_z_coordinate = true
+shader_parameter/jitter_depth_independent = true
+shader_parameter/affine_texture_mapping = true
+shader_parameter/alpha_scissor = 1.0
+
+[node name="CharacterbackuP" instance=ExtResource("1_gi31l")]
+
+[node name="Elbow" parent="rig/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_ol8pu")
+
+[node name="UpperTorso" parent="rig/Skeleton3D" index="30"]
+surface_material_override/0 = SubResource("ShaderMaterial_gi31l")
