@@ -1,14 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkdwy4y8vpa78"]
+[gd_scene load_steps=7 format=3 uid="uid://bkdwy4y8vpa78"]
 
 [ext_resource type="Script" uid="uid://yy6nibj1p62s" path="res://lightswitch.gd" id="1_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://ba40bxy8eko2v" path="res://character_body_3d.tscn" id="1_a202f"]
 [ext_resource type="Script" uid="uid://b7qmcgd1fw2dp" path="res://interactable.gd" id="1_noarx"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_a202f"]
-size = Vector3(14.1621, 1, 34.514)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_noarx"]
-size = Vector3(8.44983, 1, 27.1725)
+[ext_resource type="MeshLibrary" uid="uid://cpmmupbqi320s" path="res://Mapgridmap4.tres" id="1_r3fl7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a202f"]
 
@@ -17,9 +12,14 @@ size = Vector3(4.67822, 8.01703, 1)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86166, -7.02991, -7.52338)
-size = Vector3(14.1011, 0.210449, 33.6794)
+mesh_library = ExtResource("1_r3fl7")
+cell_size = Vector3(3, 3, 3)
+cell_scale = 1.5
+data = {
+"cells": PackedInt32Array(65535, 3, 1048579, 65535, 6, 1048579, 65535, 9, 1048579, 65532, 9, 1048579, 65532, 6, 1048579, 65532, 3, 1048579, 65535, 0, 1048579, 65532, 0, 1048579, 65532, 65533, 1048579, 65535, 65533, 1048579, 2, 65533, 1048579, 2, 0, 1048579, 2, 3, 1048579, 2, 6, 1048579, 2, 9, 1048579, 5, 65533, 655365, 5, 0, 655365, 5, 3, 655365, 5, 6, 655365, 5, 9, 655365, 65529, 6, 655365, 65529, 0, 2, 65529, 3, 2, 2, 65530, 1441796)
+}
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00272465, 4.29502, 0.0164423)
@@ -27,20 +27,6 @@ light_energy = 16.0
 light_size = 1.0
 omni_range = 86.797
 script = ExtResource("1_a0tk4")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00272465, -5.76312, 0.0164423)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03508, -1.11011, -7.14813)
-shape = SubResource("BoxShape3D_a202f")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00272465, 1.08259, 2.35564)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 0.968375, -0.249501, 0, 0.249501, 0.968375, 3.25833, -5.56654, -17.9751)
-shape = SubResource("BoxShape3D_noarx")
 
 [node name="Door" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00272465, -0.0298862, 2.61902)
