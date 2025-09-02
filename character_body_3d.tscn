@@ -40,8 +40,9 @@ shader_parameter/dither_strength = 0.3
 material = SubResource("ShaderMaterial_nl27k")
 size = Vector2(2, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fb3t6"]
-size = Vector3(3, 6.3, 3)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nl27k"]
+radius = 1.0
+height = 6.3
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_iwpo4")
@@ -68,16 +69,32 @@ target_position = Vector3(0, 0, 0)
 visible = false
 mesh = SubResource("BoxMesh_obynr")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="CharacterbackuP"]
+transform = Transform3D(1, 0, 0, 0, -0.891908, 0.452217, 0, -0.452217, -0.891908, -0.334324, 1.75913, -0.0525107)
+light_color = Color(0.733012, 0.730193, 7.70092e-07, 1)
+light_energy = 10.0
+light_indirect_energy = 4.979
+light_size = 0.529
+spot_range = 30.0
+spot_angle = 46.77
+spot_angle_attenuation = 0.287175
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CharacterbackuP/SpotLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0526745, -0.145361)
+light_color = Color(0.733012, 0.730193, 7.70092e-07, 1)
+light_indirect_energy = 0.0
+light_bake_mode = 0
+omni_range = 0.724
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.793088, 0.609108, 0, -0.609108, 0.793088, 0, 8.10423, 8.23163)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49012e-08, -0.401943)
-visible = false
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_vd578")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.099762, -1.03329, -0.088623)
-shape = SubResource("BoxShape3D_fb3t6")
+shape = SubResource("CapsuleShape3D_nl27k")
 script = ExtResource("5_obynr")
