@@ -70,7 +70,7 @@ visible = false
 mesh = SubResource("BoxMesh_obynr")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CharacterbackuP"]
-transform = Transform3D(1, 0, 0, 0, -0.891908, 0.452217, 0, -0.452217, -0.891908, -0.334324, 1.75913, -0.0525107)
+transform = Transform3D(0.98213, -0.0851091, -0.167861, -0.0202541, -0.934525, 0.355321, -0.187111, -0.345571, -0.919549, 0.43333, 1.75913, -0.0501552)
 light_color = Color(0.733012, 0.730193, 7.70092e-07, 1)
 light_energy = 10.0
 light_indirect_energy = 4.979
@@ -78,13 +78,6 @@ light_size = 0.529
 spot_range = 30.0
 spot_angle = 46.77
 spot_angle_attenuation = 0.287175
-
-[node name="OmniLight3D" type="OmniLight3D" parent="CharacterbackuP/SpotLight3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0526745, -0.145361)
-light_color = Color(0.733012, 0.730193, 7.70092e-07, 1)
-light_indirect_energy = 0.0
-light_bake_mode = 0
-omni_range = 0.724
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.793088, 0.609108, 0, -0.609108, 0.793088, 0, 8.10423, 8.23163)
