@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cje7hk4hpv6rn" path="res://player.gd" id="1_iwpo4"]
 [ext_resource type="PackedScene" uid="uid://bukbncl0pb76y" path="res://Assets/CharacterbackuP.blend" id="2_fb3t6"]
 [ext_resource type="PackedScene" uid="uid://bspg82lh4qqxs" path="res://Interaction/interact_ray.tscn" id="3_nl27k"]
-[ext_resource type="Shader" uid="uid://e3l0kjneehdm" path="res://ps1.gdshader" id="3_vd578"]
+[ext_resource type="Shader" uid="uid://bwfdcajlhnvfo" path="res://ps1postprocessing.gdshader" id="4_nl27k"]
 [ext_resource type="Script" uid="uid://p0f5fj8u4oau" path="res://collisiontest.gd" id="5_obynr"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bu0v1"]
@@ -23,21 +23,14 @@ size = Vector3(3, 6.3, 4)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nl27k"]
 render_priority = 0
-shader = ExtResource("3_vd578")
-shader_parameter/enable_fog = true
-shader_parameter/fog_color = Color(0, 0, 0, 1)
-shader_parameter/noise_color = Color(0, 0, 0, 1)
-shader_parameter/fog_distance = 100.0
-shader_parameter/fog_fade_range = 50.0
-shader_parameter/enable_noise = true
-shader_parameter/noise_time_fac = 4.0
-shader_parameter/enable_color_limitation = true
-shader_parameter/color_levels = 16
-shader_parameter/enable_dithering = true
-shader_parameter/dither_strength = 0.3
+shader = ExtResource("4_nl27k")
+shader_parameter/color_depth = 4
+shader_parameter/dithering = true
+shader_parameter/resolution_scale = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_vd578"]
 material = SubResource("ShaderMaterial_nl27k")
+flip_faces = true
 size = Vector2(2, 2)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nl27k"]

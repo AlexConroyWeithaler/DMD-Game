@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd5hlbw0gnnk2"]
+
+[ext_resource type="Shader" uid="uid://cd6qopkok42n5" path="res://postprocessing.gdshader" id="1_v2lfg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2lfg"]
+shader = ExtResource("1_v2lfg")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 16
+shader_parameter/dither_size = 2
+
+[node name="CanvasLayer" type="SubViewportContainer"]
+material = SubResource("ShaderMaterial_v2lfg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="ColorRect" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
