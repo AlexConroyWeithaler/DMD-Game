@@ -11,6 +11,9 @@
 size = Vector3(4.67822, 8.01703, 1)
 
 [sub_resource type="Environment" id="Environment_r3fl7"]
+background_mode = 2
+ambient_light_color = Color(0.152476, 0.152476, 0.152476, 1)
+ambient_light_sky_contribution = 0.5
 
 [node name="Node3D" type="Node3D"]
 
