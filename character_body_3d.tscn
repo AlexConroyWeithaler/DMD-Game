@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://ba40bxy8eko2v"]
+[gd_scene load_steps=16 format=3 uid="uid://ba40bxy8eko2v"]
 
 [ext_resource type="Script" uid="uid://cje7hk4hpv6rn" path="res://player.gd" id="1_iwpo4"]
 [ext_resource type="PackedScene" uid="uid://bukbncl0pb76y" path="res://Assets/CharacterbackuP.blend" id="2_fb3t6"]
 [ext_resource type="PackedScene" uid="uid://bspg82lh4qqxs" path="res://Interaction/interact_ray.tscn" id="3_nl27k"]
 [ext_resource type="Shader" uid="uid://bwfdcajlhnvfo" path="res://ps1postprocessing.gdshader" id="4_nl27k"]
 [ext_resource type="Script" uid="uid://p0f5fj8u4oau" path="res://collisiontest.gd" id="5_obynr"]
+[ext_resource type="PackedScene" uid="uid://cjev6nvno1py4" path="res://Assets/Characteranimtest.blend" id="6_jvo56"]
+[ext_resource type="PackedScene" uid="uid://cqkq52g61ri0l" path="res://Assets/Characteranimtest.glb" id="7_1igb4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bu0v1"]
 
@@ -37,6 +39,8 @@ size = Vector2(2, 2)
 radius = 1.0
 height = 6.3
 
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ew7rt"]
+
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_iwpo4")
 
@@ -53,6 +57,7 @@ visible = false
 mesh = SubResource("BoxMesh_bu0v1")
 
 [node name="CharacterbackuP" parent="." instance=ExtResource("2_fb3t6")]
+visible = false
 
 [node name="InteractRay" parent="CharacterbackuP" instance=ExtResource("3_nl27k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 3)
@@ -85,3 +90,13 @@ mesh = SubResource("QuadMesh_vd578")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.099762, -1.03329, -0.088623)
 shape = SubResource("CapsuleShape3D_nl27k")
 script = ExtResource("5_obynr")
+
+[node name="Characteranimtest" parent="." instance=ExtResource("6_jvo56")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.231852, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_ew7rt")
+
+[node name="Characteranimtest2" parent="." instance=ExtResource("7_1igb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1715955, -0.31422234, 3.0830295)
+visible = false
