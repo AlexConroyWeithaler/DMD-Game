@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://k8da8u3fpgdx"]
+
+[ext_resource type="PackedScene" uid="uid://dfbcnebhctmjo" path="res://Assets/Door.blend" id="1_ba8gm"]
+[ext_resource type="Script" uid="uid://ddpnrxusmxwlk" path="res://door.gd" id="1_v6xrn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ba8gm"]
+size = Vector3(2, 9, 9)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v6xrn"]
+animation = &"Close Door"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0phs7"]
+animation = &"Open Door"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_50cdl"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y5njw"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4xadh"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6hwww"]
+"states/Close Door/node" = SubResource("AnimationNodeAnimation_v6xrn")
+"states/Close Door/position" = Vector2(369, 149)
+"states/Open Door/node" = SubResource("AnimationNodeAnimation_0phs7")
+"states/Open Door/position" = Vector2(554, 75)
+transitions = ["Start", "Close Door", SubResource("AnimationNodeStateMachineTransition_50cdl"), "Close Door", "Open Door", SubResource("AnimationNodeStateMachineTransition_y5njw"), "Open Door", "Close Door", SubResource("AnimationNodeStateMachineTransition_4xadh")]
+
+[node name="Door" type="Node3D"]
+script = ExtResource("1_v6xrn")
+
+[node name="Door" parent="." instance=ExtResource("1_ba8gm")]
+
+[node name="Hitbox" type="StaticBody3D" parent="Door"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/Hitbox"]
+shape = SubResource("BoxShape3D_ba8gm")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Door")
+tree_root = SubResource("AnimationNodeStateMachine_6hwww")
+anim_player = NodePath("../Door/AnimationPlayer")
+
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+
+[editable path="Door"]
