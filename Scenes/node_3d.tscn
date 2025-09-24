@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://bkdwy4y8vpa78"]
 
-[ext_resource type="Script" uid="uid://yy6nibj1p62s" path="res://lightswitch.gd" id="1_a0tk4"]
-[ext_resource type="PackedScene" uid="uid://ba40bxy8eko2v" path="res://character_body_3d.tscn" id="1_a202f"]
-[ext_resource type="MeshLibrary" uid="uid://c2u6etkhstv0l" path="res://gridmap4.tres" id="1_jka67"]
-[ext_resource type="Script" uid="uid://b7qmcgd1fw2dp" path="res://interactable.gd" id="1_noarx"]
-[ext_resource type="PackedScene" uid="uid://k8da8u3fpgdx" path="res://door.tscn" id="5_jka67"]
+[ext_resource type="MeshLibrary" uid="uid://c2u6etkhstv0l" path="res://gridmap.tres" id="1_t3l2h"]
+[ext_resource type="Script" uid="uid://yy6nibj1p62s" path="res://Scripts/lightswitch.gd" id="2_a8auw"]
+[ext_resource type="Script" uid="uid://b7qmcgd1fw2dp" path="res://Scripts/interactable.gd" id="3_ifh66"]
+[ext_resource type="PackedScene" uid="uid://ba40bxy8eko2v" path="res://Scenes/character_body_3d.tscn" id="4_aeo3b"]
+[ext_resource type="PackedScene" uid="uid://k8da8u3fpgdx" path="res://Scenes/door.tscn" id="5_worak"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a202f"]
 
@@ -23,7 +23,7 @@ size = Vector3(2, 8, 8)
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86166, -7.02991, -7.52338)
-mesh_library = ExtResource("1_jka67")
+mesh_library = ExtResource("1_t3l2h")
 cell_size = Vector3(3.5, 3.5, 3.5)
 cell_scale = 1.75
 data = {
@@ -36,13 +36,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00272465, 4.29502, 0.016442
 light_energy = 16.0
 light_size = 1.0
 omni_range = 86.797
-script = ExtResource("1_a0tk4")
+script = ExtResource("2_a8auw")
 
 [node name="Door" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00272465, -0.0298862, 2.61902)
 collision_layer = 65
 collision_mask = 65
-script = ExtResource("1_noarx")
+script = ExtResource("3_ifh66")
 prompt_message = "Lightswitch"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
@@ -53,25 +53,25 @@ mesh = SubResource("BoxMesh_a202f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012207, -0.0650059, 0)
 shape = SubResource("BoxShape3D_a0tk4")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_a202f")]
+[node name="CharacterBody3D" parent="." instance=ExtResource("4_aeo3b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00374555, -0.0298862, 0.0164423)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r3fl7")
 
-[node name="Door2" parent="." instance=ExtResource("5_jka67")]
+[node name="Door2" parent="." instance=ExtResource("5_worak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.861338, -4.778506, -5.6613636)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Door2"]
 collision_layer = 64
 collision_mask = 64
-script = ExtResource("1_noarx")
+script = ExtResource("3_ifh66")
 prompt_message = "Toggle Door"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door2/StaticBody3D"]
 shape = SubResource("BoxShape3D_jka67")
 
-[node name="Door3" parent="." instance=ExtResource("5_jka67")]
+[node name="Door3" parent="." instance=ExtResource("5_worak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.990541, -4.778506, 4.817274)
 
 [connection signal="interacted" from="Door" to="OmniLight3D" method="_on_door_interacted"]
