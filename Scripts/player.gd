@@ -41,13 +41,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 		curAnim = WALK
-		print(velocity.length())
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length()/ SPEED)
 		anim_tree.set("parameters/WalkSpeed/scale", velocity.length() / SPEED)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED * delta)
 		velocity.z = move_toward(velocity.z, 0, SPEED * delta)
-		print(velocity.length())
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length()/ SPEED)
 		anim_tree.set("parameters/WalkSapeed/scale", velocity.length() / SPEED)
 	if velocity.length() == 0:
