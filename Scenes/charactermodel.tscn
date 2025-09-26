@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://byvmbtpqixa54"]
 
-[ext_resource type="PackedScene" uid="uid://cjev6nvno1py4" path="res://Assets/Characteranimtest.blend" id="1_p4a12"]
+[ext_resource type="PackedScene" uid="uid://cjev6nvno1py4" path="res://Assets/Models/Characteranimtest.blend" id="1_p4a12"]
 
 [node name="Characteranimtest" instance=ExtResource("1_p4a12")]
 

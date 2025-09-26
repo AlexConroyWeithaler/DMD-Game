@@ -1,5 +1,5 @@
 [gd_scene load_steps=2 format=3 uid="uid://dfg5nstv0exqf"]
 
-[ext_resource type="PackedScene" uid="uid://bukbncl0pb76y" path="res://Assets/CharacterbackuP.blend" id="1_gi31l"]
+[ext_resource type="PackedScene" uid="uid://bukbncl0pb76y" path="res://Assets/Models/CharacterbackuP.blend" id="1_gi31l"]
 
 [node name="CharacterbackuP" instance=ExtResource("1_gi31l")]

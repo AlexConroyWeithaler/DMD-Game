@@ -1,10 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkdwy4y8vpa78"]
+[gd_scene load_steps=19 format=3 uid="uid://bkdwy4y8vpa78"]
 
 [ext_resource type="MeshLibrary" uid="uid://c2u6etkhstv0l" path="res://gridmap.tres" id="1_t3l2h"]
 [ext_resource type="Script" uid="uid://yy6nibj1p62s" path="res://Scripts/lightswitch.gd" id="2_a8auw"]
 [ext_resource type="Script" uid="uid://b7qmcgd1fw2dp" path="res://Scripts/interactable.gd" id="3_ifh66"]
 [ext_resource type="PackedScene" uid="uid://ba40bxy8eko2v" path="res://Scenes/character_body_3d.tscn" id="4_aeo3b"]
 [ext_resource type="PackedScene" uid="uid://k8da8u3fpgdx" path="res://Scenes/door.tscn" id="5_worak"]
+[ext_resource type="Theme" uid="uid://fslttr5tn8m0" path="res://Scenes/texttheme.tres" id="6_ifh66"]
+[ext_resource type="FontFile" uid="uid://cainjt2dk38da" path="res://Assets/text assets/pixelfontBold.ttf" id="7_aeo3b"]
+[ext_resource type="Script" uid="uid://dnwbr2or5o8ql" path="res://Scripts/dialog.gd" id="7_worak"]
+[ext_resource type="Texture2D" uid="uid://3e4aemeuyffv" path="res://Assets/text assets/arrow.png" id="9_rvjhm"]
+[ext_resource type="Script" uid="uid://nxkgv1g7brcp" path="res://Scenes/dialogue_controller.gd" id="10_rvjhm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a202f"]
 
@@ -18,6 +23,19 @@ ambient_light_sky_contribution = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jka67"]
 size = Vector3(2, 8, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ifh66"]
+texture = ExtResource("9_rvjhm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvjhm"]
+texture = ExtResource("9_rvjhm")
+modulate_color = Color(0, 1, 0.29999995, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cb6ip"]
+texture = ExtResource("9_rvjhm")
+modulate_color = Color(0.53701174, 0.53701115, 0.53701144, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cb6ip"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -35,6 +53,7 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00272465, 4.29502, 0.0164423)
 light_energy = 16.0
 light_size = 1.0
+shadow_enabled = true
 omni_range = 86.797
 script = ExtResource("2_a8auw")
 
@@ -54,7 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012207, -0.0650059, 0)
 shape = SubResource("BoxShape3D_a0tk4")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("4_aeo3b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00374555, -0.0298862, 0.0164423)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0196524, -7.8976707, -4.1685176)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r3fl7")
@@ -74,5 +93,70 @@ shape = SubResource("BoxShape3D_jka67")
 [node name="Door3" parent="." instance=ExtResource("5_worak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.990541, -4.778506, 4.817274)
 
+[node name="DialogueBox" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchor_top = 0.667
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+theme = ExtResource("6_ifh66")
+script = ExtResource("7_worak")
+
+[node name="Panel" type="Panel" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_ifh66")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Speaker" type="Label" parent="DialogueBox/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_ifh66")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_aeo3b")
+theme_override_font_sizes/font_size = 32
+text = "Some placeholder text"
+
+[node name="Dialogue" type="RichTextLabel" parent="DialogueBox/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_ifh66")
+theme_override_font_sizes/normal_font_size = 24
+text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+fit_content = true
+
+[node name="Continue" type="Button" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.95
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_ifh66")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rvjhm")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_cb6ip")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cb6ip")
+
+[node name="DialogueController" type="Node" parent="."]
+script = ExtResource("10_rvjhm")
+
 [connection signal="interacted" from="Door" to="OmniLight3D" method="_on_door_interacted"]
 [connection signal="interacted" from="Door2/StaticBody3D" to="Door2" method="_on_static_body_3d_interacted"]
+[connection signal="pressed" from="DialogueBox/Continue" to="DialogueBox" method="_on_continue_pressed"]
