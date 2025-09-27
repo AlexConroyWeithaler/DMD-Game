@@ -14,10 +14,14 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 func _physics_process(_delta):
-	prompt.text = ""
-	if is_colliding():
-		var collider = get_collider(0)
-		if collider is Interactable:
-			prompt.text = collider.get_prompt()
-			if Input.is_action_just_pressed("interact"):
-				collider.interact(owner)
+	if owner.player_interaction != true:
+		prompt.visible = false
+	if owner.player_interaction == true:
+		prompt.visible = true
+		prompt.text = ""
+		if is_colliding():
+			var collider = get_collider(0)
+			if collider is Interactable:
+				prompt.text = collider.get_prompt()
+				if Input.is_action_just_pressed("interact"):
+					collider.interact(owner)

@@ -4,13 +4,10 @@ enum {IDLE,WALK,RIGHT,LEFT}
 var curAnim = IDLE
 @onready var pivot = $Characteranimtest
 @onready var anim_tree = $Characteranimtest/AnimationTree
+@export var player_input: bool = true
+@export var player_gravity: bool = true
+@export var player_interaction: bool = true
 @export var rotation_speed = 12.0
-func handle_animations():
-	match curAnim:
-		IDLE:
-			anim_tree.set("parameters/Movement/transition_request", "Idle")
-		WALK: 
-			anim_tree.set("parameters/Movement/transition_request", "Walk")
 func jump():
 	anim_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 func _ready() -> void:
@@ -24,10 +21,22 @@ const JUMP_VELOCITY = 5
 var current_speed_x: float
 var current_speed_z: float
 func _physics_process(delta: float) -> void:
-	handle_animations()
-	# Add the gravity.
+	if player_gravity != false:
+		_player_gravity(delta)
+	if player_input != false:
+		_movement_input(delta)
+	if player_input == false:
+		velocity.x = move_toward(velocity.x, 0, SPEED * delta * 2)
+		velocity.z = move_toward(velocity.z, 0, SPEED * delta * 2)
+		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length()/ SPEED)
+		anim_tree.set("parameters/WalkSapeed/scale", velocity.length() / SPEED)
+	move_and_slide()
+	
+func _player_gravity(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+
+func _movement_input(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -54,4 +63,5 @@ func _physics_process(delta: float) -> void:
 		curAnim = IDLE
 	if direction != Vector3.ZERO:
 		pivot.rotation.y = lerp_angle(pivot.rotation.y, atan2(direction.x, direction.z), delta * rotation_speed)
-	move_and_slide()
+	
+	
