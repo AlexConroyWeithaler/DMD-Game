@@ -15,7 +15,7 @@ func _ready() -> void:
 	print(test, "player1")
 	var test2 = get_collision_mask_value(7)
 	print(test2, "player2")
-const SPEED = 6.0
+const SPEED = 8.0
 const HORIZONTAL_ACC = 2.0
 const JUMP_VELOCITY = 5
 var current_speed_x: float

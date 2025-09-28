@@ -1,25 +1,23 @@
-[gd_scene load_steps=19 format=3 uid="uid://bkdwy4y8vpa78"]
+[gd_scene load_steps=33 format=3 uid="uid://bkdwy4y8vpa78"]
 
 [ext_resource type="MeshLibrary" uid="uid://c2u6etkhstv0l" path="res://gridmap.tres" id="1_t3l2h"]
 [ext_resource type="Script" uid="uid://yy6nibj1p62s" path="res://Scripts/lightswitch.gd" id="2_a8auw"]
 [ext_resource type="Script" uid="uid://b7qmcgd1fw2dp" path="res://Scripts/interactable.gd" id="3_ifh66"]
 [ext_resource type="PackedScene" uid="uid://ba40bxy8eko2v" path="res://Scenes/character_body_3d.tscn" id="4_aeo3b"]
+[ext_resource type="Environment" uid="uid://c1xut0b2dcb3a" path="res://Scenes/roomenvironment.tres" id="5_vudi7"]
 [ext_resource type="PackedScene" uid="uid://k8da8u3fpgdx" path="res://Scenes/door.tscn" id="5_worak"]
 [ext_resource type="Theme" uid="uid://fslttr5tn8m0" path="res://Scenes/texttheme.tres" id="6_ifh66"]
 [ext_resource type="FontFile" uid="uid://cainjt2dk38da" path="res://Assets/text assets/pixelfontBold.ttf" id="7_aeo3b"]
 [ext_resource type="Script" uid="uid://dnwbr2or5o8ql" path="res://Scripts/dialog.gd" id="7_worak"]
 [ext_resource type="Texture2D" uid="uid://3e4aemeuyffv" path="res://Assets/text assets/arrow.png" id="9_rvjhm"]
 [ext_resource type="Script" uid="uid://nxkgv1g7brcp" path="res://Scenes/dialogue_controller.gd" id="10_rvjhm"]
+[ext_resource type="PackedScene" uid="uid://cc0whmcejwfj" path="res://Scenes/postbox.tscn" id="11_cb6ip"]
+[ext_resource type="Script" uid="uid://bnlrf6g4mq8c4" path="res://Scenes/room_roof_control.gd" id="13_1vwyg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a202f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a0tk4"]
 size = Vector3(4.67822, 8.01703, 1)
-
-[sub_resource type="Environment" id="Environment_r3fl7"]
-background_mode = 2
-ambient_light_color = Color(0.152476, 0.152476, 0.152476, 1)
-ambient_light_sky_contribution = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jka67"]
 size = Vector3(2, 8, 8)
@@ -37,6 +35,100 @@ modulate_color = Color(0.53701174, 0.53701115, 0.53701144, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cb6ip"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vudi7"]
+size = Vector3(31, 10, 85)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vwyg"]
+resource_name = "WallMaterial"
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 2
+specular_mode = 2
+albedo_color = Color(0.64, 0.64, 0.64, 1)
+metallic_specular = 0.0
+roughness = 0.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vudi7"]
+material = SubResource("StandardMaterial3D_1vwyg")
+size = Vector2(31, 85)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1vwyg"]
+size = Vector3(42, 10, 39)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vudi7"]
+resource_local_to_scene = true
+resource_name = "WallMaterial"
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 2
+specular_mode = 2
+albedo_color = Color(0.64, 0.64, 0.64, 1)
+metallic_specular = 0.0
+roughness = 0.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1vwyg"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_vudi7")
+size = Vector2(43, 43)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahc04"]
+resource_local_to_scene = true
+resource_name = "WallMaterial"
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 2
+specular_mode = 2
+albedo_color = Color(0.64, 0.64, 0.64, 1)
+metallic_specular = 0.0
+roughness = 0.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8cye3"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ahc04")
+size = Vector2(43, 43)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_062e5"]
+resource_local_to_scene = true
+resource_name = "WallMaterial"
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 2
+specular_mode = 2
+albedo_color = Color(0.64, 0.64, 0.64, 1)
+metallic_specular = 0.0
+roughness = 0.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m2rse"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_062e5")
+size = Vector2(43, 43)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rl1jb"]
+resource_local_to_scene = true
+resource_name = "WallMaterial"
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 2
+specular_mode = 2
+albedo_color = Color(0.64, 0.64, 0.64, 1)
+metallic_specular = 0.0
+roughness = 0.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_58eop"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_rl1jb")
+size = Vector2(43, 43)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -45,7 +137,7 @@ mesh_library = ExtResource("1_t3l2h")
 cell_size = Vector3(3.5, 3.5, 3.5)
 cell_scale = 1.75
 data = {
-"cells": PackedInt32Array(65535, 3, 1048579, 65535, 6, 1048579, 65535, 9, 1048579, 65532, 9, 1048579, 65532, 6, 1048579, 65532, 3, 1048579, 65535, 0, 1048579, 65532, 0, 1048579, 65532, 65533, 1048579, 65535, 65533, 1048579, 2, 65533, 1048579, 2, 0, 1048579, 2, 3, 1048579, 2, 6, 1048579, 2, 9, 1048579, 5, 65533, 655365, 5, 0, 655365, 5, 3, 655365, 5, 6, 655365, 5, 9, 655365, 65529, 6, 655365, 65529, 0, 2, 65529, 3, 2, 2, 65530, 1441796, 65529, 65533, 6)
+"cells": PackedInt32Array(65532, 0, 1048579, 65532, 65533, 1048579, 65529, 0, 2, 65529, 65533, 6, 65535, 65533, 655366, 65535, 0, 655362, 65529, 65530, 1441793, 65535, 65530, 655361, 65532, 65530, 1441794, 65529, 3, 4, 65535, 3, 655364, 65532, 3, 655363, 2, 3, 1048581, 5, 3, 1048581, 2, 65530, 1441797, 5, 65530, 1441797, 8, 65530, 1441796, 8, 3, 1048580, 11, 3, 1048577, 11, 65530, 655361, 11, 65533, 655365, 11, 0, 655365, 2, 0, 655363, 2, 65533, 655363, 5, 65533, 655363, 5, 0, 655363, 8, 0, 655363, 8, 65533, 655363, 65526, 3, 1048581, 65523, 3, 1048581, 65520, 3, 1048580, 65520, 65530, 1441796, 65523, 65530, 1441797, 65526, 65530, 1441797, 65517, 65530, 1441793, 65517, 3, 1, 65517, 0, 5, 65517, 65533, 5, 65520, 65533, 3, 65520, 0, 3, 65523, 0, 3, 65523, 65533, 3, 65526, 65533, 3, 65526, 0, 3, 65529, 6, 5, 65529, 9, 6, 65529, 12, 2, 65529, 15, 4, 65526, 15, 1048581, 65523, 15, 1048581, 65526, 6, 1441797, 65523, 6, 1441797, 65520, 6, 1441796, 65517, 6, 1441793, 65517, 9, 5, 65517, 12, 5, 65517, 15, 1, 65520, 15, 1048580, 65526, 9, 1048579, 65526, 12, 1048579, 65523, 12, 1048579, 65523, 9, 1048579, 65520, 9, 1048579, 65520, 12, 1048579, 65532, 6, 1048579, 65532, 9, 1048579, 65532, 12, 1048579, 65532, 15, 1048579, 65535, 9, 655366, 65535, 6, 655365, 65535, 12, 655362, 65535, 15, 655364, 2, 6, 1441797, 5, 6, 1441797, 8, 6, 1441796, 11, 6, 655361, 11, 9, 655365, 11, 12, 655365, 11, 15, 1048577, 2, 15, 1048581, 5, 15, 1048581, 8, 15, 1048580, 8, 12, 1048579, 8, 9, 1048579, 5, 9, 1048579, 5, 12, 1048579, 2, 12, 1048579, 2, 9, 1048579, 65532, 18, 1441794, 65529, 18, 1441793, 65535, 18, 655361, 65529, 21, 5, 65529, 24, 5, 65529, 27, 5, 65535, 21, 655365, 65535, 24, 655365, 65535, 27, 655365, 65535, 30, 1048577, 65529, 30, 1, 65532, 30, 1048581, 65532, 21, 1048579, 65532, 24, 1048579, 65532, 27, 1048579)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
@@ -53,8 +145,9 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00272465, 4.29502, 0.0164423)
 light_energy = 16.0
 light_size = 1.0
+light_cull_mask = 4294967293
 shadow_enabled = true
-omni_range = 86.797
+omni_range = 48.0
 script = ExtResource("2_a8auw")
 
 [node name="Door" type="StaticBody3D" parent="."]
@@ -74,10 +167,10 @@ shape = SubResource("BoxShape3D_a0tk4")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("4_aeo3b")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0196524, -7.8976707, -4.1685176)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.744742, -7.8976707, 82.06949)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_r3fl7")
+environment = ExtResource("5_vudi7")
 
 [node name="Door2" parent="." instance=ExtResource("5_worak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.861338, -4.778506, -5.6613636)
@@ -92,7 +185,7 @@ prompt_message = "Toggle Door"
 shape = SubResource("BoxShape3D_jka67")
 
 [node name="Door3" parent="." instance=ExtResource("5_worak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.990541, -4.778506, 4.817274)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1096745, -4.778506, -5.6469584)
 
 [node name="DialogueBox" type="Control" parent="."]
 unique_name_in_owner = true
@@ -159,7 +252,130 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_cb6ip")
 [node name="DialogueController" type="Node" parent="."]
 script = ExtResource("10_rvjhm")
 
+[node name="Mailbox" parent="." instance=ExtResource("11_cb6ip")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.943213, -7.297315, -11.047095)
+
+[node name="postbox2" parent="Mailbox" index="1"]
+prompt_message = "Open Mailbox"
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -10.00474, 7.0552645, 87.64858)
+light_color = Color(0.7571677, 0.93153507, 0.9251588, 1)
+light_energy = 7.546
+shadow_enabled = true
+spot_range = 28.927
+spot_angle = 30.68
+
+[node name="Rooms" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="MainHall" type="Node3D" parent="Rooms"]
+
+[node name="MainHallway" type="Area3D" parent="Rooms/MainHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("13_1vwyg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/MainHall/MainHallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 11.5)
+shape = SubResource("BoxShape3D_vudi7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rooms/MainHall/MainHallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.001, 11)
+layers = 2
+mesh = SubResource("PlaneMesh_vudi7")
+skeleton = NodePath("../..")
+
+[node name="Room1" type="Node3D" parent="Rooms"]
+
+[node name="Room1" type="Area3D" parent="Rooms/Room1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 0, 0)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("13_1vwyg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Room1/Room1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.5)
+shape = SubResource("BoxShape3D_1vwyg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rooms/Room1/Room1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -11)
+layers = 2
+mesh = SubResource("PlaneMesh_1vwyg")
+skeleton = NodePath("../..")
+
+[node name="Room2" type="Node3D" parent="Rooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42)
+
+[node name="Room2" type="Area3D" parent="Rooms/Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 0, 0)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("13_1vwyg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Room2/Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.5)
+shape = SubResource("BoxShape3D_1vwyg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rooms/Room2/Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -11)
+layers = 2
+mesh = SubResource("PlaneMesh_8cye3")
+skeleton = NodePath("../..")
+
+[node name="Room3" type="Node3D" parent="Rooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 42)
+
+[node name="Room3" type="Area3D" parent="Rooms/Room3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 0, 0)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("13_1vwyg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Room3/Room3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.5)
+shape = SubResource("BoxShape3D_1vwyg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rooms/Room3/Room3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -13)
+layers = 2
+mesh = SubResource("PlaneMesh_m2rse")
+skeleton = NodePath("../..")
+
+[node name="Room4" type="Node3D" parent="Rooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 0)
+
+[node name="Room4" type="Area3D" parent="Rooms/Room4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 0, 0)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("13_1vwyg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Room4/Room4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.5)
+shape = SubResource("BoxShape3D_1vwyg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rooms/Room4/Room4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+layers = 2
+mesh = SubResource("PlaneMesh_58eop")
+skeleton = NodePath("../..")
+
 [connection signal="interacted" from="Door" to="OmniLight3D" method="_on_door_interacted"]
 [connection signal="interacted" from="Door2/StaticBody3D" to="Door2" method="_on_static_body_3d_interacted"]
 [connection signal="interacted" from="Door2/StaticBody3D" to="DialogueController" method="_on_static_body_3d_interacted"]
 [connection signal="pressed" from="DialogueBox/Continue" to="DialogueBox" method="_on_continue_pressed"]
+[connection signal="interacted" from="Mailbox/postbox2" to="DialogueController" method="_on_postbox_2_interacted"]
+[connection signal="body_entered" from="Rooms/MainHall/MainHallway" to="Rooms/MainHall/MainHallway" method="_on_body_entered"]
+[connection signal="body_exited" from="Rooms/MainHall/MainHallway" to="Rooms/MainHall/MainHallway" method="_on_body_exited"]
+[connection signal="body_entered" from="Rooms/Room1/Room1" to="Rooms/Room1/Room1" method="_on_body_entered"]
+[connection signal="body_exited" from="Rooms/Room1/Room1" to="Rooms/Room1/Room1" method="_on_body_exited"]
+[connection signal="body_entered" from="Rooms/Room2/Room2" to="Rooms/Room2/Room2" method="_on_body_entered"]
+[connection signal="body_exited" from="Rooms/Room2/Room2" to="Rooms/Room2/Room2" method="_on_body_exited"]
+[connection signal="body_entered" from="Rooms/Room3/Room3" to="Rooms/Room3/Room3" method="_on_body_entered"]
+[connection signal="body_exited" from="Rooms/Room3/Room3" to="Rooms/Room3/Room3" method="_on_body_exited"]
+[connection signal="body_entered" from="Rooms/Room4/Room4" to="Rooms/Room4/Room4" method="_on_body_entered"]
+[connection signal="body_exited" from="Rooms/Room4/Room4" to="Rooms/Room4/Room4" method="_on_body_exited"]
+
+[editable path="Mailbox"]

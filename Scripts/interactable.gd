@@ -3,7 +3,7 @@ class_name Interactable
 signal interacted(body)
 @export var prompt_message = "Interact"
 @export var prompt_input = "interact"
-
+@export var interact_disabled = false
 func get_prompt():
 	var key_name = ""
 	for action in InputMap.action_get_events(prompt_input):
