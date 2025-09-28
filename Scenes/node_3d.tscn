@@ -167,7 +167,7 @@ shape = SubResource("BoxShape3D_a0tk4")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("4_aeo3b")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.744742, -7.8976707, 82.06949)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.744742, -8.897671, 88.06949)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("5_vudi7")
@@ -230,6 +230,7 @@ text = "Some placeholder text"
 layout_mode = 2
 theme = ExtResource("6_ifh66")
 theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
 text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 fit_content = true
 

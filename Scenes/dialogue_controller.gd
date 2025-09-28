@@ -2,7 +2,7 @@ extends Node
 
 @onready var _dialog = %DialogueBox
 func _ready():
-	pass
+	_dialog.display_line("[shake rate=20.0 level=5 connected=1][pulse freq=1.0 color=#FF0000 ease=-2.0]ERROR:[/pulse] Memory processor damaged.[/shake][br][shake rate=20.0 level=5 connected=1][pulse freq=1.0 color=#FF0000 ease=-2.0]ERROR:[/pulse] Critical systems damaged.[/shake][br][shake rate=20.0 level=5 connected=1][pulse freq=1.0 color=#FF0000 ease=-2.0]ERROR:[/pulse] Heavy damage from: [pulse freq=1.0 color=#FF0000 ease=-2.0](FALLING)[/pulse] has been sustained in the [pulse freq=1.0 color=#FF0000 ease=-2.0](HEAD)[/pulse] module. [br][brw] RECCOMMENDATION: Search surroundings for assistance, or tools for repair. Gather information, officer.[/shake]", "SYSTEM:")
 
 
 func _on_static_body_3d_interacted(body: Variant) -> void:
